@@ -68,12 +68,12 @@ We have provided the JSON file `src/assets/eq5d.json` to assist you, but it is n
 ### Key requirements
 
 - [x]   Each page should have one question, similar to the EQ-5D-5L demo app.
-- [ ]   Replicate the basic layout of the demo app's pages.
+- [x]   Replicate the basic layout of the demo app's pages.
 - [x]   Include Previous and Next buttons to navigate between questions.
 - [x]   The user must answer the current question before proceeding to the next question.
 - [x]   When navigating back to a previous question, the previously selected answer should be retained.
 - [x]   Like the ED-5Q-5L demo app, include a "Back to start" button on the final page that resets the demo and clears any entered data.
-- [ ]   Use standalone components
+- [x]   Use standalone components
 - [ ]   Use OnPush change detection
 - [ ]   Push your code to a public repository (GitHub or GitLab) and share it with us.
 

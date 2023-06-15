@@ -10,7 +10,7 @@
         </div>
     </mat-step>
         <mat-step [stepControl]="firstFormGroup.controls[question.name]" *ngFor="let question of questions">
-            <p *ngIf="question.label">{{question.label}}</p>
+            <p *ngIf="question.label && question.type !== 'vas'">{{question.label}}</p>
             <p *ngIf="question.description">{{question.description}}</p>
             <p *ngIf="question.instructions">{{question.instructions}}</p>
 
@@ -18,7 +18,8 @@
                 <mat-radio-button *ngFor="let option of question.options" [value]="option.value">{{option.display}}</mat-radio-button>
             </mat-radio-group>
 
-            <mat-slider *ngIf="question.type === 'vas'" 
+            <div *ngIf="question.type == 'vas'" [innerHTML]="question.label"></div>
+            <mat-slider class="w-16" *ngIf="question.type == 'vas'" 
                 min="{{question.minValue}}" 
                 max="{{question.maxValue}}" 
                 step="{{question.stepSize}}" 
@@ -33,12 +34,12 @@
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
-        <p>If you wish to change some of your answers, you can go back and do so. If not, press finish.</p>
+        <p>If you wish to change some of your answers, you can go back and do so. If not, press Finalize.</p>
         <!-- <p>{{firstFormGroup.value | json}}</p> -->
         <div>
             <button type="button" mat-button matStepperPrevious>Back</button>
-            <button type="button" mat-button (click)="stepper.reset()">Finish</button>
-            <button type="button" mat-button (click)="print()">Print</button>
+            <button type="button" mat-button (click)="stepper.reset()">Finalize</button>
+            <!-- <button type="button" mat-button (click)="print()">Print</button> -->
         </div>
     </mat-step>
 </mat-stepper>

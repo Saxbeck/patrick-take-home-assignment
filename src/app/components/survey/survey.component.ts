@@ -43,8 +43,8 @@ export class SurveyComponent implements OnInit{
 
     this.firstFormGroup = this._formBuilder.group({
       eq5dHeader: [, Validators.nullValidator],
-      mobility: [Number, Validators.required],
-      healthVas: ['', Validators.required],
+      mobility: [null, Validators.required],
+      healthVas: [null, Validators.required],
       selfcare: ['', Validators.required],
       usualActivities: ['', Validators.required],
       painOrDiscomfort: ['', Validators.required],
@@ -53,6 +53,6 @@ export class SurveyComponent implements OnInit{
   }
 
   print(): void {
-    console.log(this.firstFormGroup);
+    console.log(this.firstFormGroup.value);
   }
 }
