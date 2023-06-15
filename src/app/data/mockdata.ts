@@ -32,5 +32,16 @@ export const MOCKDATA = [
 				"display": "I am unable to walk about"
 			}
 		]
+	},
+	{
+		"name": "healthVas",
+		"type": "vas",
+		"label": "<ul><li>We would like to know how good or bad your health is TODAY.</li><li>You will see a scale numbered 0 to 100.</li><li>100 means the best health you can imagine.</li><li>0 means the best health you can imagine.</li><li>Please indicate on the scale how your health is TODAY</li></ul>",
+		"isLabelHtml": true,
+		"minValue": 0,
+		"maxValue": 100,
+		"stepSize": 1,
+		"minText": "The worst health you can imagine",
+		"maxText": "The best health you can imagine"
 	}
 ]

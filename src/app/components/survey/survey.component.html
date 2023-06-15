@@ -1,14 +1,39 @@
-<p>survey works!</p>
-<mat-stepper linear #stepper>
+
+<form [formGroup]="firstFormGroup">
+<mat-stepper [linear]="isLinear" #stepper>
     <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
+        <ng-template matStepLabel>Welcome</ng-template>
         <p>Welcome to the survey.</p>
         <div>
-          <p>Here is more survey demo text</p>
-          <button mat-button matStepperNext>Next</button>
+            <p>Here is more survey demo text</p>
+            <button type="button" mat-button matStepperNext>Next</button>
         </div>
-      </mat-step>
-  <mat-step [stepControl]="firstFormGroup">
+    </mat-step>
+        <mat-step [stepControl]="firstFormGroup" *ngFor="let question of questions">
+            <p *ngIf="question.label">{{question.label}}</p>
+            <p *ngIf="question.description">{{question.description}}</p>
+            <p *ngIf="question.instructions">{{question.instructions}}</p>
+
+            <mat-radio-group formControlName={{question.name}}>
+                <mat-radio-button *ngFor="let option of question.options" [value]="option.value">{{option.display}}</mat-radio-button>
+            </mat-radio-group>
+
+            <mat-slider *ngIf="question.type === 'vas'" 
+                min="{{question.minValue}}" 
+                max="{{question.maxValue}}" 
+                step="{{question.stepSize}}" 
+                value="1.5">
+                <input matSliderThumb formControlName="{{question.name}}">
+              </mat-slider>
+            <div>
+                <button type="button" mat-button matStepperPrevious>Back</button>
+                <button type="button" (click)="print()" mat-button matStepperNext>Next</button>
+                <p>{{firstFormGroup.controls[0]}}</p>
+                <p>{{firstFormGroup.value | json}}</p>
+            </div>
+        </mat-step>
+    
+  <!-- <mat-step [stepControl]="firstFormGroup">
     <form [formGroup]="firstFormGroup">
       <ng-template matStepLabel>Fill out your name</ng-template>
       <mat-form-field>
@@ -19,7 +44,8 @@
         <button type="button" mat-button matStepperNext>Next</button>
       </div>
     </form>
-  </mat-step>
+  </mat-step> -->
+<!--   
   <mat-step [stepControl]="secondFormGroup">
     <form [formGroup]="secondFormGroup">
       <ng-template matStepLabel>Fill out your name</ng-template>
@@ -31,14 +57,17 @@
         <button mat-button matStepperNext>Next</button>
       </div>
     </form>
-  </mat-step>
-  <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    <p>You are now done.</p>
-    <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
-      <button mat-button (click)="print()">Print</button>
-    </div>
-  </mat-step>
-  </mat-stepper>
+  </mat-step> -->
+    <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <p>{{firstFormGroup.status}}</p>
+        <p>{{firstFormGroup.value | json}}</p>
+        <div>
+            <button type="button" mat-button matStepperPrevious>Back</button>
+            <button type="button" mat-button (click)="stepper.reset()">Reset</button>
+            <button type="button" mat-button (click)="print()">Print</button>
+        </div>
+    </mat-step>
+</mat-stepper>
+</form>
