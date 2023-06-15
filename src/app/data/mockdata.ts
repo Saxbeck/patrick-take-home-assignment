@@ -1,5 +1,5 @@
 export const MOCKDATA = [
-    {
+	{
 		"name": "eq5dHeader",
 		"type": "introduction",
 		"label": "EQ-5D-5L",
@@ -30,6 +30,119 @@ export const MOCKDATA = [
 			{
 				"value": 5,
 				"display": "I am unable to walk about"
+			}
+		]
+	},
+	{
+		"name": "selfcare",
+		"type": "choice",
+		"label": "SELF-CARE",
+		"instructions": "Please select the ONE box that best describes your health TODAY.",
+		"options": [
+			{
+				"value": 1,
+				"display": "I have no problems washing or dressing myself"
+			},
+			{
+				"value": 2,
+				"display": "I have slight problems washing or dressing myself"
+			},
+			{
+				"value": 3,
+				"display": "I have moderate problems washing or dressing myself"
+			},
+			{
+				"value": 4,
+				"display": "I have severe problems washing or dressing myself"
+			},
+			{
+				"value": 5,
+				"display": "I am unable to wash or dress myself"
+			}
+		]
+	},
+	{
+		"name": "usualActivities",
+		"type": "choice",
+		"label": "USUAL ACTIVITIES",
+		"description": "(e.g. work, study, housework, family or leisure activities)",
+		"instructions": "Please select the ONE box that best describes your health TODAY.",
+		"options": [
+			{
+				"value": 1,
+				"display": "I have no problems doing my usual activities"
+			},
+			{
+				"value": 2,
+				"display": "I have slight problems doing my usual activities"
+			},
+			{
+				"value": 3,
+				"display": "I have moderate problems doing my usual activities"
+			},
+			{
+				"value": 4,
+				"display": "I have severe problems doing my usual activities"
+			},
+			{
+				"value": 5,
+				"display": "I am unable to do my usual activities"
+			}
+		]
+	},
+	{
+		"name": "painOrDiscomfort",
+		"type": "choice",
+		"label": "PAIN / DISCOMFORT",
+		"instructions": "Please select the ONE box that best describes your health TODAY.",
+		"options": [
+			{
+				"value": 1,
+				"display": "I have no pain or discomfort"
+			},
+			{
+				"value": 2,
+				"display": "I have slight pain or discomfort"
+			},
+			{
+				"value": 3,
+				"display": "I have moderate pain or discomfort"
+			},
+			{
+				"value": 4,
+				"display": "I have severe pain or discomfort"
+			},
+			{
+				"value": 5,
+				"display": "I have extreme pain or discomfort"
+			}
+		]
+	},
+	{
+		"name": "anxietyOrDepression",
+		"type": "choice",
+		"label": "ANXIETY / DEPRESSION",
+		"instructions": "Please select the ONE box that best describes your health TODAY.",
+		"options": [
+			{
+				"value": 1,
+				"display": "I am not anxious or depressed"
+			},
+			{
+				"value": 2,
+				"display": "I am slightly anxious or depressed"
+			},
+			{
+				"value": 3,
+				"display": "I am moderately anxious or depressed"
+			},
+			{
+				"value": 4,
+				"display": "I am severely anxious or depressed"
+			},
+			{
+				"value": 5,
+				"display": "I am extremely anxious or depressed"
 			}
 		]
 	},

@@ -1,5 +1,64 @@
 # Patrick Take Home Assignment
 
+## Toughts
+
+**Wednesday** 
+The included .json file contains an array, with question objects. 
+They have shared parameter such as 'name, type, label' with some having differences such as 'options, instructions, 'minvalue, maxvalue', this leads to 3 distinct question types.
+
+These could be done as classes, but that would require you to rewrite the survey structure each time.
+Could it be done directly from the json, using type to differentiate ?
+For now lets stick it in a .ts file, so we can return it as mock data from a service.
+
+
+```` json
+{
+	"name": "mobility",
+	"type": "choice",
+	"label": "MOBILITY",
+	"instructions": "Please select the ONE box that best describes your health TODAY.",
+	"options": [
+			{
+				"value": 1,
+				"display": "I have no problems in walking about"
+			}
+	]
+}
+````
+
+Factory Pattern maybe ? 
+- https://blogs.halodoc.io/commonly-used-design-patterns-in-angular/
+- https://iwconnect.com/creating-components-dynamically-with-component-factory-in-angular/
+
+Seems like the right pattern
+- https://dev.to/coly010/the-factory-pattern-design-patterns-meet-the-frontend-1p2l
+
+Ok let's try and make a simpel factory, with 2 types, and a text.
+Just to try it out before committing too much time, if it fails I can always fallback to the dynamic form tutorial, and instantiate all the questions manually. But there's not much reusability in that.
+
+Alright enough about factories, I over complicated things again the Dynamic Forms docs is totally usable and enough for this.
+
+Let's try and combine both:
+- Make a question base, that defines all the possible answer types
+- Define the control classes for the questions
+- Create the dynamic form component
+- Create a service with hardcoded question types
+- Display form, and ensure valid data
+- Make basic form validation
+- Refactor question service to generate questions from a factory class
+
+**Thursday**
+I'm an idiot, Material Stepper takes form groups as input, the json is structured as object so you can generate a new formgroup for each. Making a factory + dynamic form is way too overkill.
+Previous work added to its own branch, to be pruned.
+
+huh, had to add animation providers in boostrapApplication, hope this is in scope or else I did something wrong..
+
+Ok, seems like we are getting somewhere, the stepper generates steps from questionservice using mockdata, but only 2 types for now. It also saves some values now, but im having problems clearing them because of incorrect stepcontrol/formArray use.
+
+The stepper takes all the mock data now, after manually updating the formbuilder with all the question names. Still trouble with stepcontrol, if I get it working i should find a way to cut down on the component boilerplate.
+
+I have been struggling waaaay too long with the step control, i forgot i set the key as the question.name.
+
 ## Task
 
 The task is to re-implement the EQ-5D-5L questionnaire demo app found [here](https://eq-5d-tablet-pda-demo.euroqol.org/app/app.cfm?app=5&id=1D8B24E9-09E4-8CE4-7F7D2A6608C625EE) using the latest versions of Angular and Angular Material.
@@ -8,15 +67,15 @@ We have provided the JSON file `src/assets/eq5d.json` to assist you, but it is n
 
 ### Key requirements
 
--   Each page should have one question, similar to the EQ-5D-5L demo app.
--   Replicate the basic layout of the demo app's pages.
--   Include Previous and Next buttons to navigate between questions.
--   The user must answer the current question before proceeding to the next question.
--   When navigating back to a previous question, the previously selected answer should be retained.
--   Like the ED-5Q-5L demo app, include a "Back to start" button on the final page that resets the demo and clears any entered data.
--   Use standalone components
--   Use OnPush change detection
--   Push your code to a public repository (GitHub or GitLab) and share it with us.
+- [x]   Each page should have one question, similar to the EQ-5D-5L demo app.
+- [ ]   Replicate the basic layout of the demo app's pages.
+- [x]   Include Previous and Next buttons to navigate between questions.
+- [x]   The user must answer the current question before proceeding to the next question.
+- [x]   When navigating back to a previous question, the previously selected answer should be retained.
+- [x]   Like the ED-5Q-5L demo app, include a "Back to start" button on the final page that resets the demo and clears any entered data.
+- [ ]   Use standalone components
+- [ ]   Use OnPush change detection
+- [ ]   Push your code to a public repository (GitHub or GitLab) and share it with us.
 
 ### Helpful notes
 

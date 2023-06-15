@@ -8,7 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 
 
-import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, Validators, FormBuilder, FormGroup, FormArray } from '@angular/forms';
 import { MockquestionService } from 'src/app/services/mockquestion.service';
 
 @Component({
@@ -32,6 +32,7 @@ export class SurveyComponent implements OnInit{
   isLinear = true;
 
   firstFormGroup!: FormGroup;
+  control!: FormArray
 
   constructor(private _formBuilder: FormBuilder, private questionService: MockquestionService) {}
 
@@ -39,10 +40,9 @@ export class SurveyComponent implements OnInit{
 
   ngOnInit(): void{
     this.questions = this.questionService.getMockQuestions()
-    console.log(this.questions);
 
     this.firstFormGroup = this._formBuilder.group({
-      eq5dHeader: [null || "undefined", Validators.nullValidator],
+      eq5dHeader: [, Validators.nullValidator],
       mobility: [Number, Validators.required],
       healthVas: ['', Validators.required],
       selfcare: ['', Validators.required],
@@ -50,12 +50,9 @@ export class SurveyComponent implements OnInit{
       painOrDiscomfort: ['', Validators.required],
       anxietyOrDepression: ['', Validators.required],
     });
-    
   }
 
   print(): void {
     console.log(this.firstFormGroup);
-    console.log(this.firstFormGroup.controls[1]);
-    
   }
 }

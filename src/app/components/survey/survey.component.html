@@ -2,14 +2,14 @@
 <form [formGroup]="firstFormGroup">
 <mat-stepper [linear]="isLinear" #stepper>
     <mat-step>
-        <ng-template matStepLabel>Welcome</ng-template>
+        <!-- <ng-template matStepLabel>Welcome</ng-template> -->
         <p>Welcome to the survey.</p>
         <div>
             <p>Here is more survey demo text</p>
             <button type="button" mat-button matStepperNext>Next</button>
         </div>
     </mat-step>
-        <mat-step [stepControl]="firstFormGroup" *ngFor="let question of questions">
+        <mat-step [stepControl]="firstFormGroup.controls[question.name]" *ngFor="let question of questions">
             <p *ngIf="question.label">{{question.label}}</p>
             <p *ngIf="question.description">{{question.description}}</p>
             <p *ngIf="question.instructions">{{question.instructions}}</p>
@@ -27,45 +27,17 @@
               </mat-slider>
             <div>
                 <button type="button" mat-button matStepperPrevious>Back</button>
-                <button type="button" (click)="print()" mat-button matStepperNext>Next</button>
-                <p>{{firstFormGroup.controls[0]}}</p>
-                <p>{{firstFormGroup.value | json}}</p>
+                <button type="button" mat-button matStepperNext>Next</button>
             </div>
         </mat-step>
-    
-  <!-- <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
-      </mat-form-field>
-      <div>
-        <button type="button" mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step> -->
-<!--   
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
-      <mat-form-field>
-        <mat-label>age</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="age" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step> -->
     <mat-step>
         <ng-template matStepLabel>Done</ng-template>
         <p>You are now done.</p>
-        <p>{{firstFormGroup.status}}</p>
-        <p>{{firstFormGroup.value | json}}</p>
+        <p>If you wish to change some of your answers, you can go back and do so. If not, press finish.</p>
+        <!-- <p>{{firstFormGroup.value | json}}</p> -->
         <div>
             <button type="button" mat-button matStepperPrevious>Back</button>
-            <button type="button" mat-button (click)="stepper.reset()">Reset</button>
+            <button type="button" mat-button (click)="stepper.reset()">Finish</button>
             <button type="button" mat-button (click)="print()">Print</button>
         </div>
     </mat-step>
