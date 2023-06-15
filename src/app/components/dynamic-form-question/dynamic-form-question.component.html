@@ -1,0 +1,17 @@
+<div [formGroup] = "form">
+    <label [attr.for] = "question.name">{{question.name}}</label>
+    
+    <div [ngSwitch]="question.type">
+        <p *ngSwitchCase="'introduction'" [formControlName]="question.name">Slide : {{question.description}}</p>
+
+
+        <!-- <select [id]="question.name" *ngSwitchCase="'choice'">
+            <option *ngFor="let opt of question.options" [value]="opt.value">{{opt.display}}</option>
+        </select> -->
+
+        <mat-radio-group *ngSwitchCase="'choice'" [formControlName]="question.name">
+            <mat-radio-button *ngFor="let opt of question.options">{{opt.display}}</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="errorMessage" *ngIf="!isValid">Error Messagee: {{form.status}}</div>
+</div>

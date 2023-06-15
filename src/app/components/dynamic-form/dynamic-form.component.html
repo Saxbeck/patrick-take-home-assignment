@@ -1,0 +1,15 @@
+<div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div *ngFor="let question of questions; let index = index">
+            <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
+        </div>
+
+          <div class="form-row">
+            <button mat-flat-button type="submit" [disabled]="form.valid">Save</button>
+          </div>
+    </form>
+
+    <div *ngIf="payLoad" class="form-row">
+        <strong>Saved the following values</strong><br>{{payLoad}}
+    </div>
+</div>

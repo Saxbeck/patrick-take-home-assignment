@@ -1,5 +1,51 @@
 # Patrick Take Home Assignment
 
+## Thoughts
+
+The included .json file contains an array, with question objects. 
+They have shared parameter such as 'name, type, label' with some having differences such as 'options, instructions, 'minvalue, maxvalue', this leads to 3 distinct question types.
+
+These could be done as classes, but that would require you rewrite survey structure each time.
+Could it be done directly from the json, using type to differentiate ?
+
+
+```` json
+{
+	"name": "mobility",
+	"type": "choice",
+	"label": "MOBILITY",
+	"instructions": "Please select the ONE box that best describes your health TODAY.",
+	"options": [
+			{
+				"value": 1,
+				"display": "I have no problems in walking about"
+			}
+	]
+}
+````
+
+Factory Pattern maybe ? 
+- https://blogs.halodoc.io/commonly-used-design-patterns-in-angular/
+- https://iwconnect.com/creating-components-dynamically-with-component-factory-in-angular/
+
+Seems like the right pattern
+- https://dev.to/coly010/the-factory-pattern-design-patterns-meet-the-frontend-1p2l
+
+Ok let's try and make a simpel factory, with 2 types, and a text.
+Just to try it out before committing too much time, if it fails I can always fallback to the dynamic form tutorial, and instantiate all the questions manually. But there's not much reusability in that.
+
+Alright enough about factories, I over complicated things again the Dynamic Forms docs is totally usable and enough for this.
+
+Let's try and combine both:
+- Make a question base, that defines all the possible answer types
+- Define the control classes for the questions
+- Create the dynamic form component
+- Create a service with hardcoded question types
+- Display form, and ensure valid data
+- Make basic form validation
+- Refactor question service to generate questions from a factory class
+
+
 ## Task
 
 The task is to re-implement the EQ-5D-5L questionnaire demo app found [here](https://eq-5d-tablet-pda-demo.euroqol.org/app/app.cfm?app=5&id=1D8B24E9-09E4-8CE4-7F7D2A6608C625EE) using the latest versions of Angular and Angular Material.
