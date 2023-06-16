@@ -57,8 +57,6 @@ Ok, seems like we are getting somewhere, the stepper generates steps from questi
 
 The stepper takes all the mock data now, after manually updating the formbuilder with all the question names. Still trouble with stepcontrol, if I get it working i should find a way to cut down on the component boilerplate.
 
-I have been struggling waaaay too long with the step control, i forgot i set the key as the question.name.
-
 ## Task
 
 The task is to re-implement the EQ-5D-5L questionnaire demo app found [here](https://eq-5d-tablet-pda-demo.euroqol.org/app/app.cfm?app=5&id=1D8B24E9-09E4-8CE4-7F7D2A6608C625EE) using the latest versions of Angular and Angular Material.
