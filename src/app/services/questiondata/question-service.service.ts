@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { MOCKQUESTIONS } from 'src/app/data/mock-questions';
 import { IntroductionQuestion } from 'src/app/models/introduction-question';
 import { QuestionBase } from 'src/app/models/question-base.model';
 import { RadioQuestion } from 'src/app/models/radio-question';
