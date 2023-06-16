@@ -11,10 +11,13 @@ export class QuestionControlService {
   toFormGroup(questions: QuestionBase<string>[]){
     const group: any = {};
 
+    /*the question typecheck is a bit hacky
+      find a better solutiuon.
+    */
     questions.forEach(question => {
-      group[question.name] = question.name ? 
-        new FormControl(null || '', Validators.required): new
-        FormControl(null || '')
+      group[question.name] = question.name && question.type !== "introduction" 
+        ? new FormControl(null || '', Validators.required) 
+        : new FormControl(null || '', Validators.nullValidator)
     });
     return new FormGroup(group);
   }
