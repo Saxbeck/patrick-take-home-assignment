@@ -41,7 +41,7 @@ export class QuestionBase<T> {
         this.isLabelHtml = !!options.isLabelHtml;
         // check what the operators mean
         this.minValue = options.minValue === undefined ? 0 : options.minValue;
-        this.maxValue = options.minValue === undefined ? 100 : options.minValue;
+        this.maxValue = options.maxValue === undefined ? 100 : options.maxValue;
         this.stepSize = options.stepSize === undefined ? 1: options.stepSize;
         this.minText = options.minText || '';
         this.maxText = options.maxText || '';

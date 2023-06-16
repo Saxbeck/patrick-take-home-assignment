@@ -6,11 +6,12 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { QuestionControlService } from 'src/app/services/question-control.service';
 import { DynamicFormQuestionComponent } from '../dynamic-form-question/dynamic-form-question.component';
 import { MatButtonModule } from '@angular/material/button';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @Component({
   selector: 'app-dynamic-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, DynamicFormQuestionComponent, MatButtonModule],
+  imports: [CommonModule,ReactiveFormsModule, DynamicFormQuestionComponent, MatButtonModule, MatStepperModule],
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })
@@ -33,5 +34,9 @@ export class DynamicFormComponent implements OnInit{
     this.payLoad = JSON.stringify(this.form.getRawValue());
     console.log("hello: " + this.payLoad);
     
+  }
+
+  print(): void {
+    console.log(this.form.controls);
   }
 }

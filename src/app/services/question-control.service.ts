@@ -13,8 +13,8 @@ export class QuestionControlService {
 
     questions.forEach(question => {
       group[question.name] = question.name ? 
-        new FormControl(question.value || '', Validators.required): new
-        FormControl(question.value || '')
+        new FormControl(null || '', Validators.required): new
+        FormControl(null || '')
     });
     return new FormGroup(group);
   }

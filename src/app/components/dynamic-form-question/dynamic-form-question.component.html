@@ -1,17 +1,31 @@
-<div [formGroup] = "form">
-    <label [attr.for] = "question.name">{{question.name}}</label>
-    
+<div [formGroup] = "form">  
     <div [ngSwitch]="question.type">
-        <p *ngSwitchCase="'introduction'" [formControlName]="question.name">Slide : {{question.description}}</p>
+        <!-- <label  [attr.for] = "question.label">{{question.label}}</label> -->
 
+        <div *ngSwitchCase="'introduction'" >
+            <label  [attr.for] = "question.label">{{question.label}}</label>
+            <p>{{question.description}}</p>
+            <!-- {{form.control}} -->
+        </div>
 
-        <!-- <select [id]="question.name" *ngSwitchCase="'choice'">
-            <option *ngFor="let opt of question.options" [value]="opt.value">{{opt.display}}</option>
-        </select> -->
+        <div *ngSwitchCase="'choice'">
+            <label  [attr.for] = "question.label">{{question.label}}</label>
+            <mat-radio-group [formControlName]="question.name">
+                <mat-radio-button *ngFor="let opt of question.options" [value]="opt.value">{{opt.display}}</mat-radio-button>
+            </mat-radio-group>
+        </div>
 
-        <mat-radio-group *ngSwitchCase="'choice'" [formControlName]="question.name">
-            <mat-radio-button *ngFor="let opt of question.options">{{opt.display}}</mat-radio-button>
-        </mat-radio-group>
+        <div *ngSwitchCase="'vas'">
+            <div [innerHTML] = "question.label"></div>
+            <mat-slider
+            min="{{question.minValue}}" 
+            max="{{question.maxValue}}" 
+            step="{{question.stepSize}}"
+            value="1">
+                <input matSliderThumb formControlName="{{question.name}}">
+            </mat-slider>
+        </div>
     </div>
-    <div class="errorMessage" *ngIf="!isValid">Error Messagee: {{form.status}}</div>
+    <!-- <div class="errorMessage">Error Messagee: {{form.value | json}}</div> -->
+    <!-- <button type="button" mat-button matStepperNext>Next</button> -->
 </div>
