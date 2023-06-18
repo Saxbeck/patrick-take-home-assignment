@@ -11,7 +11,9 @@
                         <p>Here is more survey demo text</p>
                     </mat-card-content>
                     <mat-card-footer>
-                        <button type="button" mat-button matStepperNext>Next</button>
+                        <div class="flex p-1 justify-between">
+                            <button type="button" mat-button matStepperNext>Next</button>
+                        </div>
                     </mat-card-footer>
                 </mat-card>
             </mat-step>
@@ -22,10 +24,10 @@
                         <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
                     </mat-card-content>
                     <mat-card-footer>
-                    <div class="flex p-1 justify-between">
-                        <button type="button" mat-button matStepperPrevious>Back</button>
-                        <button type="button" mat-button matStepperNext>Next</button>
-                    </div>
+                        <div class="flex p-1 justify-between">
+                            <button type="button" mat-button matStepperPrevious>Back</button>
+                            <button type="button" mat-button matStepperNext>Next</button>
+                        </div>
                     </mat-card-footer>
                 </mat-card>
             </mat-step>
@@ -40,7 +42,7 @@
                         <p>If you wish to change some of your answers, you can go back and do so. If not, press Finalize.</p>
                     </mat-card-content>
                     <mat-card-footer>
-                        <div class="flex justify-between">
+                        <div class="flex p-1 justify-between">
                             <button type="button" mat-button matStepperPrevious>Back</button>
                             <!-- <button type="button" mat-button (click)="print()">Print</button> -->
                             <button type="button" mat-button (click)="stepper.reset()">Finalize</button>
