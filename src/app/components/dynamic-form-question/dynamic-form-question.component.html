@@ -1,23 +1,26 @@
-<div [formGroup] = "form">  
+<div [formGroup]="form">  
     <div [ngSwitch]="question.type">
-        <!-- <label  [attr.for] = "question.label">{{question.label}}</label> -->
-
+        
         <div *ngSwitchCase="'introduction'" >
-            <label  [attr.for] = "question.label">{{question.label}}</label>
+            <label class="font-medium" [attr.for]="question.label">{{question.label}}</label>
             <p>{{question.description}}</p>
-            <!-- {{form.control}} -->
         </div>
 
         <div *ngSwitchCase="'choice'">
-            <label  [attr.for] = "question.label">{{question.label}}</label>
-            <mat-radio-group [formControlName]="question.name">
-                <mat-radio-button *ngFor="let opt of question.options" [value]="opt.value">{{opt.display}}</mat-radio-button>
-            </mat-radio-group>
+            <div>
+                <p>{{question.instructions}}</p>
+                <label class="font-medium" [attr.for]="question.label">{{question.label}}</label>
+            </div>
+            <div class="w-1/2 flex content-start">
+                <mat-radio-group [formControlName]="question.name">
+                        <mat-radio-button class="w-full" *ngFor="let opt of question.options" [value]="opt.value">{{opt.display}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
         </div>
 
         <div *ngSwitchCase="'vas'">
-            <div [innerHTML] = "question.label"></div>
-            <mat-slider
+            <div [innerHTML]="question.label"></div>
+            <mat-slider class="w-1/2"
             min="{{question.minValue}}" 
             max="{{question.maxValue}}" 
             step="{{question.stepSize}}"

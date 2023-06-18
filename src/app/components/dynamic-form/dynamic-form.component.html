@@ -1,32 +1,53 @@
-<div>
-    <form [formGroup]="form">
-          <mat-stepper [linear]="true" #stepper>
+<div class="container h-screen">
+    <mat-stepper [linear]="true" #stepper>
+        <form [formGroup]="form">
             <mat-step>
                 <ng-template matStepLabel>Welcome</ng-template>
-                <p>Welcome to the survey.</p>
-                <div>
-                    <p>Here is more survey demo text</p>
-                    <button type="button" mat-button matStepperNext>Next</button>
-                </div>
+                <mat-card>
+                    <mat-card-header>
+                        <h1>Welcome to the survey.</h1>
+                    </mat-card-header>
+                    <mat-card-content class="h-80">
+                        <p>Here is more survey demo text</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <button type="button" mat-button matStepperNext>Next</button>
+                    </mat-card-footer>
+                </mat-card>
             </mat-step>
 
             <mat-step [stepControl]="form.controls[question.name]" *ngFor="let question of questions">
-                <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
-                <button type="button" mat-button matStepperPrevious>Back</button>
-                <button type="button" mat-button matStepperNext>Next</button>
-                <!-- <button type="button" mat-button (click)="print()">Print</button> -->
+                <mat-card>
+                    <mat-card-content class="h-80">
+                        <app-dynamic-form-question [question]="question" [form]="form"></app-dynamic-form-question>
+                    </mat-card-content>
+                    <mat-card-footer>
+                    <div class="flex p-1 justify-between">
+                        <button type="button" mat-button matStepperPrevious>Back</button>
+                        <button type="button" mat-button matStepperNext>Next</button>
+                    </div>
+                    </mat-card-footer>
+                </mat-card>
             </mat-step>
                 
             <mat-step>
-                <ng-template matStepLabel>Done</ng-template>
-                <p>You are now done.</p>
-                <p>If you wish to change some of your answers, you can go back and do so. If not, press Finalize.</p>
-                <div>
-                    <button type="button" mat-button matStepperPrevious>Back</button>
-                    <button type="button" mat-button (click)="stepper.reset()">Finalize</button>
-                    <button type="button" mat-button (click)="print()">Print</button>
-                </div>
+                <mat-card>
+                    <mat-card-header>
+                        <ng-template matStepLabel>End</ng-template>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p>You are now done.</p>
+                        <p>If you wish to change some of your answers, you can go back and do so. If not, press Finalize.</p>
+                    </mat-card-content>
+                    <mat-card-footer>
+                        <div class="flex justify-between">
+                            <button type="button" mat-button matStepperPrevious>Back</button>
+                            <!-- <button type="button" mat-button (click)="print()">Print</button> -->
+                            <button type="button" mat-button (click)="stepper.reset()">Finalize</button>
+                        </div>
+                    </mat-card-footer>
+                </mat-card>
             </mat-step>
-        </mat-stepper>
-    </form>
+        </form>
+    </mat-stepper>
 </div>

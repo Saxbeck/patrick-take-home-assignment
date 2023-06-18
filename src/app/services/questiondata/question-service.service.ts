@@ -17,9 +17,11 @@ export class QuestionServiceService {
 
   getMockQuestionsData() : QuestionBase<string>[] {
     this.mockdata.forEach(question => {
-      let test = this.createQuestion(question)
-      this.questions.push(test);
+      let qst = this.createQuestion(question)
+      this.questions.push(qst);
     })
+    //console.log(this.questions);
+    
     return this.questions;
   }
 

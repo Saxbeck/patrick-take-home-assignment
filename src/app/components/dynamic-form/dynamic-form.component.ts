@@ -7,11 +7,12 @@ import { QuestionControlService } from 'src/app/services/question-control.servic
 import { DynamicFormQuestionComponent } from '../dynamic-form-question/dynamic-form-question.component';
 import { MatButtonModule } from '@angular/material/button';
 import {MatStepperModule} from '@angular/material/stepper';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-dynamic-form',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, DynamicFormQuestionComponent, MatButtonModule, MatStepperModule],
+  imports: [CommonModule,MatCardModule,ReactiveFormsModule, DynamicFormQuestionComponent, MatButtonModule, MatStepperModule],
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.scss']
 })
@@ -20,12 +21,13 @@ export class DynamicFormComponent implements OnInit{
   @Input() questions: QuestionBase<string>[] | null = [];
   @Input() form!: FormGroup;
 
-  constructor(private qcs: QuestionControlService, private qservice:QuestionServiceService){}
+  constructor(
+    private qcs: QuestionControlService, 
+    private qservice:QuestionServiceService){}
   
   ngOnInit(): void{
     this.questions = this.qservice.getMockQuestionsData();
     this.form = this.qcs.toFormGroup(this.questions as QuestionBase<string>[]);
-    //console.log(this.form);
   }
 
   print(): void {
