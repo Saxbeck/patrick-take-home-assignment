@@ -8,8 +8,8 @@
 
         <div *ngSwitchCase="'choice'">
             <div>
-                <p>{{question.instructions}}</p>
                 <label class="font-medium" [attr.for]="question.label">{{question.label}}</label>
+                <p>{{question.instructions}}</p>
             </div>
             <div class="w-1/2 flex content-start">
                 <mat-radio-group [formControlName]="question.name">
